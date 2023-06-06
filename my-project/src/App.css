@@ -1,0 +1,9 @@
+/* Custom CSS to hide scrollbar */
+.hide-scroll::-webkit-scrollbar {
+    width: 0.5rem;
+    background-color: transparent;
+  }
+
+  .hide-scroll::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
