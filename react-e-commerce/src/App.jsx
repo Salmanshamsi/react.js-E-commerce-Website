@@ -13,7 +13,6 @@ import Dashboard from './secssions/Dashboard/Dashboard';
 
 
 function App() {
-  document.title = "E-Store"
   return (
     <div>
       <Cart />

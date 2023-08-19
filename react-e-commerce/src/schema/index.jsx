@@ -20,6 +20,20 @@ const validationSchema = Yup.object().shape({
    
   });
 
+  const loginSchema = Yup.object().shape({
+    email: Yup.string()
+      .email('Invalid email address')
+      .required('Email is required'),
+    password: Yup.string()
+      .min(6, 'Password must be at least 6 characters')
+      .required('Password is required'),
+  });
+
+  const LoginInitialValues = {
+    email: "",
+    password: "",
+  };
+
 const ContactSchema = Yup.object({
 
     email:Yup.string().email().required("please enter email !"),
@@ -31,4 +45,4 @@ const ContactSchema = Yup.object({
 })
 
 
-export {validationSchema, ContactSchema};
+export {validationSchema, ContactSchema,loginSchema,LoginInitialValues};

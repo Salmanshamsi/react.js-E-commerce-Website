@@ -1,20 +1,59 @@
-import React from 'react'
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {  useFormik } from 'formik';
+import { loginSchema,LoginInitialValues } from '../../schema';
+
+
 
 const Login = () => {
+
+
+  const formik = useFormik({
+    initialValues: LoginInitialValues,
+    validationSchema: loginSchema,
+    onSubmit: async (values) => {
+      console.log(values)
+    },
+  });
+
+
+
+const authUser = async (email,password) => {
+
+  try{
+      const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        return true;
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+  }catch(error){
+    console.log(error)
+    return false;
+  }
+
+}
+
+
   return (
     <div>
         
       <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50 ">
         <div className="bg-white p-6 rounded-lg shadow-lg space-y-5 ">
             <h1 className='font-bold text-2xl' >Login</h1>
-              <form>
+              <form onSubmit={formik.handleSubmit} >
                 {/* Email input */}
                 <div className="relative mb-6" data-te-input-wrapper-init>
-                <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="inline-full-name" type="text" placeholder='Email' />
+                <input onChange={formik.handleChange}  className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="inline-full-name" type="text" placeholder='Email' />
                 </div>
                 {/* Password input */}
                 <div className="relative mb-6" data-te-input-wrapper-init>
-                <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="inline-full-name" type="password" placeholder='password' />
+                <input onChange={formik.handleChange}  className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="inline-full-name" type="password" placeholder='password' />
                 </div>
                 {/* Remember me checkbox */}
                 <div className="mb-6 flex items-center justify-between">

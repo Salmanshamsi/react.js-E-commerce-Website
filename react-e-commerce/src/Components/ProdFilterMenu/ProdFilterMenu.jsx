@@ -10,7 +10,7 @@ const ProdFilterMenu = () => {
 
     const dispatch = useDispatch();
 
-    const FilterButtons = ["suv","sedan","hash-back"];
+    const FilterButtons = ["shirts","T-Shirts","Hoodies","Watches","Pants","Smart-items"];
   
     const show = FilterButtons.map((CurEl,i)=>{
         return(

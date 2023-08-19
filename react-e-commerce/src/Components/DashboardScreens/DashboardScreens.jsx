@@ -4,12 +4,12 @@ import AddProd from '../AddProd/AddProd'
 
 const DashboardScreens = ({title}) => {
 
-  const [addProdModal,setAddProdModal] = useState("hidden")
+  const [addProdModal,setAddProdModal] = useState("hidden");
 
   return (
     <div>
         <DataTable title={title} />
-        <AddProd visiblity={addProdModal} setVisiblity={setAddProdModal}  />
+        <AddProd visiblity={addProdModal} setVisiblity={setAddProdModal} />
           {title == "products" ? <button 
           onClick={(e)=>{
             e.preventDefault();

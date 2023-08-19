@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { sedan, suv, hashBack } from '../../assets/ModelData/ModelData';
+import { shirts,hoodies,pants } from '../../assets/ModelData/ModelData';
 
 const initialState = {
-  data: suv,
+  data: shirts,
   form: "visible",
 }
 
@@ -12,12 +12,12 @@ export const productSlice = createSlice({
   reducers: {
         FilterMenuHandler:(state,action)=>{          
               
-            if(action.payload == "suv"){
-                state.data = suv;
-            }else if(action.payload == "sedan"){
-              state.data = sedan;
-            }else if(action.payload == "hash-back"){
-              state.data = hashBack;
+            if(action.payload == "Shirts"){
+                state.data = shirts;
+            }else if(action.payload == "Hoodies"){
+              state.data = hoodies;
+            }else if(action.payload == "Pants"){
+              state.data = pants;
             }   
         },
         formHandler:(state,action)=>{          
